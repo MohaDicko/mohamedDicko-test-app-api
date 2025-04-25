@@ -1,16 +1,24 @@
+// app/layout.tsx
 import "./globals.css";
-import Sidebar from "@/components/Sidebar";
-import Header from "@/components/Header";
+import type { Metadata } from "next";
+import AdminLayout from "@/components/layout/AdminLayout";
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export const metadata: Metadata = {
+  title: "Admin App",
+  description: "Administration académique",
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="fr">
-      <body className="flex h-screen overflow-hidden">
-        <Sidebar />
-        <div className="flex flex-col flex-1">
-          <Header />
-          <main className="flex-1 p-6 overflow-y-auto">{children}</main>
-        </div>
+      <body>
+        <AdminLayout>
+          {children}
+        </AdminLayout>
       </body>
     </html>
   );
